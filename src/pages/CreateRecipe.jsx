@@ -1,55 +1,48 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDatabase } from "../hooks/UseDatabase";
 
 const CreateRecipe = () => {
-  const { postData, getPost, data: recipes } = useDatabase("/recipes");
-
-  useEffect(() => {
-    getPost();
-  }, []);
+  const { postData } = useDatabase("/recipes");
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const form = new FormData(e.target);
 
-    const newRecipe = {
-      title: form.get("title"),
-      image: {
-        small: form.get("image"),
-        large: form.get("image"),
-      },
-      overview: form.get("overview"),
-      servings: form.get("servings"),
-      prepMinutes: Number(form.get("prepMinutes")),
-      cookMinutes: Number(form.get("cookMinutes")),
-      ingredients: form
-        .get("ingredients")
-        .split(",")
-        .map((i) => i.trim()),
-      instructions: form
-        .get("instructions")
-        .split(",")
-        .map((step) => step.trim()),
-    };
+    const title = e.target.title.value;
+    const image = e.target.image.value;
+    const overview = e.target.overview.value;
+    const servings = e.target.servings.value;
+    const prepMinutes = e.target.prepMinutes.value;
+    const cookMinutes = e.target.cookMinutes.value;
+    const ingredients = e.target.ingredients.value.split(",");
+    const instructions = e.target.instructions.value.split(",");
 
-    const isValid =
-      newRecipe.title &&
-      newRecipe.image.small &&
-      newRecipe.overview &&
-      newRecipe.servings &&
-      newRecipe.prepMinutes &&
-      newRecipe.cookMinutes &&
-      newRecipe.ingredients.length > 0 &&
-      newRecipe.instructions.length > 0;
+    if (
+      title &&
+      image &&
+      overview &&
+      servings &&
+      prepMinutes &&
+      cookMinutes &&
+      ingredients.length > 0 &&
+      instructions.length > 0
+    ) {
+      const newRecipe = {
+        title,
+        image: { small: image, large: image },
+        overview,
+        servings,
+        prepMinutes: Number(prepMinutes),
+        cookMinutes: Number(cookMinutes),
+        ingredients,
+        instructions,
+      };
 
-    if (isValid) {
       postData(newRecipe);
-      alert("Recipe added successfully ✅");
+      alert("Recipe added successfully ");
+      e.target.reset();
     } else {
-      alert("Please fill in all fields ❗");
+      alert("Please fill in all fields ");
     }
-
-    e.target.reset();
   };
 
   return (
@@ -60,8 +53,16 @@ const CreateRecipe = () => {
       <input type="number" name="servings" placeholder="servings" />
       <input type="number" name="prepMinutes" placeholder="prepMinutes" />
       <input type="number" name="cookMinutes" placeholder="cookMinutes" />
-      <input type="text" name="ingredients" placeholder="ingredients" />
-      <input type="text" name="instructions" placeholder="instructions" />
+      <input
+        type="text"
+        name="ingredients"
+        placeholder="ingredients (comma separated)"
+      />
+      <input
+        type="text"
+        name="instructions"
+        placeholder="instructions (comma separated)"
+      />
       <button type="submit" className="btn">
         Submit
       </button>

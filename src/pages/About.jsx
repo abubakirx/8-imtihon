@@ -45,40 +45,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Why we exist */}
-      <section className="container">
-        <div className="exist__container">
-          <h2 className="exist__title">Why we exist</h2>
-          <ul className="exist__list">
-            <li className="exist__item">
-              <h4 className="exist__item-title">Cut through the noise.</h4>
-              <p className="exist__item-desc">
-                The internet is bursting with recipes, yet most busy cooks still
-                default to take-away or packaged foods. We curate a tight
-                collection of fool-proof dishes so you can skip the scrolling
-                and start cooking.
-              </p>
-            </li>
-            <li className="exist__item">
-              <h4 className="exist__item-title">Empower home kitchens.</h4>
-              <p className="exist__item-desc">
-                When you control what goes into your meals, you control how you
-                feel. Every recipe is built around unrefined ingredients and
-                ready in about half an hour of active prep.
-              </p>
-            </li>
-            <li className="exist__item">
-              <h4 className="exist__item-title">Make healthy look good.</h4>
-              <p className="exist__item-desc">
-                High-resolution imagery shows you exactly what success looks
-                like—because we eat with our eyes first, and confidence matters.
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      {/* Food philosophy */}
       <section className="container">
         <div className="exist__container">
           <h2 className="exist__title">Our food philosophy</h2>
@@ -95,21 +61,6 @@ const About = () => {
               <p className="exist__item-desc">
                 Spices, citrus, and natural sweetness replace excess salt,
                 sugar, and additives.
-              </p>
-            </li>
-            <li className="exist__item">
-              <h4 className="exist__item-title">Respect for time.</h4>
-              <p className="exist__item-desc">
-                Weeknight meals should slot into real schedules; weekend cooking
-                can be leisurely but never wasteful.
-              </p>
-            </li>
-            <li className="exist__item">
-              <h4 className="exist__item-title">Sustainable choices.</h4>
-              <p className="exist__item-desc">
-                Short ingredient lists cut down on food waste and carbon
-                footprint, while plant-forward dishes keep things
-                planet-friendly.
               </p>
             </li>
           </ul>

@@ -110,9 +110,7 @@ const Recipes = () => {
       {/* Recipe list */}
       <ul className="recipes__list container">
         {!recipes && <li>Loading...</li>}
-        {recipes && filteredRecipes.length === 0 && (
-          <li>No recipes found</li>
-        )}
+        {recipes && filteredRecipes.length === 0 && <li>No recipes found</li>}
         {filteredRecipes.map((recipe) => (
           <DishCard key={recipe.id} recipe={recipe} />
         ))}
